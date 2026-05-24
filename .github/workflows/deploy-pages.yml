@@ -1,0 +1,74 @@
+name: Build and Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate telemetry figures
+        run: |
+          pip install -r research/requirements.txt
+          python research/generate_visuals.py
+
+      - name: Compile IEEE paper (pdflatex)
+        working-directory: research
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq texlive-latex-extra texlive-fonts-recommended cm-super
+          pdflatex -interaction=nonstopmode VXR_Sandbox_Paper.tex
+          pdflatex -interaction=nonstopmode VXR_Sandbox_Paper.tex
+
+      - name: Copy research PDF to whitepaper
+        run: |
+          mkdir -p docs/whitepaper
+          cp research/VXR_Sandbox_Paper.pdf docs/whitepaper/VXR_Sandbox_Research.pdf
+
+      - name: Setup Emscripten
+        uses: mymind/activate-emsdk@v3
+        with:
+          version: 3.1.56
+
+      - name: Build Wasm kernel
+        run: |
+          emcc src-cpp/vxr_kernel.cpp -o docs/vxr_kernel.js -O3 -std=c++17 \
+            -s MODULARIZE=1 -s EXPORT_NAME=createVXRModule \
+            -s EXPORTED_FUNCTIONS='["_analyze_prompt","_free"]' \
+            -s EXPORTED_RUNTIME_METHODS='["ccall","cwrap","UTF8ToString","stringToNewUTF8"]' \
+            -s ENVIRONMENT=web -s FILESYSTEM=0 --no-entry
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

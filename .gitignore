@@ -1,0 +1,21 @@
+node_modules/
+.DS_Store
+.emsdk/
+.tools/
+__pycache__/
+*.pyc
+
+# LaTeX aux
+research/*.aux
+research/*.log
+research/*.out
+research/*.bbl
+research/*.blg
+research/*.synctex.gz
+
+# Ignore generated JS/Wasm except deployed site artifacts
+*.wasm
+!docs/vxr_kernel.wasm
+*.js
+!docs/app.js
+!docs/vxr_kernel.js

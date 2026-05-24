@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VXR-Sandbox | Voxion Labs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="grid-overlay" aria-hidden="true"></div>
+
+    <div class="dashboard">
+        <header class="dashboard-header">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true">◈</span>
+                <div>
+                    <h1>VXR-Sandbox</h1>
+                    <p class="tagline">Cyber-Defense Dashboard · Zero-backend prompt injection defense</p>
+                </div>
+            </div>
+            <div id="kernel-status" class="kernel-status kernel-status--loading" role="status" aria-live="polite">
+                <span class="kernel-status-dot" aria-hidden="true"></span>
+                <span class="kernel-status-text">Initializing Wasm kernel…</span>
+            </div>
+        </header>
+
+        <section class="research-cta" aria-label="Research publication">
+            <a
+                class="research-cta-btn"
+                href="./whitepaper/VXR_Sandbox_Research.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                📄 Read VXR-Sandbox Research Paper
+            </a>
+        </section>
+
+        <main class="dashboard-main">
+            <section class="panel input-panel" aria-labelledby="input-heading">
+                <div class="panel-header">
+                    <h2 id="input-heading">Prompt Ingress</h2>
+                    <span class="panel-badge">Local only</span>
+                </div>
+                <label class="sr-only" for="prompt-input">User prompt to analyze</label>
+                <textarea
+                    id="prompt-input"
+                    rows="8"
+                    placeholder="Paste a user prompt here. Analysis runs entirely in your browser via WebAssembly — no data leaves this device."
+                    spellcheck="false"
+                ></textarea>
+                <div class="input-actions">
+                    <button id="scan-btn" type="button" disabled>Analyze locally</button>
+                    <span class="input-hint">Press Ctrl+Enter to scan</span>
+                </div>
+            </section>
+
+            <section class="panel result-panel" aria-labelledby="result-heading">
+                <div class="panel-header">
+                    <h2 id="result-heading">Threat Assessment</h2>
+                    <span class="panel-badge panel-badge--metrics">Wasm kernel</span>
+                </div>
+                <div id="scan-result" class="scan-result scan-result--idle" aria-live="polite">
+                    <div class="scan-result-placeholder">
+                        <span class="placeholder-icon" aria-hidden="true">⬡</span>
+                        <p>Awaiting prompt analysis.</p>
+                        <p class="placeholder-sub">Results will appear here instantly — no page reload required.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 Voxion Labs. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
