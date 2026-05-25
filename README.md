@@ -296,15 +296,6 @@ See the [research paper](./docs/whitepaper/VXR_Sandbox_Research.pdf) for threat 
 
 If you reference this work academically or in engineering discussions:
 
-```bibtex
-@misc{vxr_sandbox_2026,
-  title        = {VXR-Sandbox: Browser-Native Prompt Injection Defense via WebAssembly},
-  author       = {Voxion Labs},
-  year         = {2026},
-  howpublished = {\url{https://voxionlabs.github.io/VXR-Sandbox/}}
-}
-```
-
 This repository is licensed under the **MIT License**.
 
 ```text
