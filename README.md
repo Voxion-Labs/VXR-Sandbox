@@ -13,7 +13,7 @@ Browser-native, deterministic LLM prompt-injection defense. A **zero-backend** s
 
 | Resource | Link |
 | --- | --- |
-| **Live Demo (GitHub Pages)** | [https://voxion-labs.github.io/VXR-Sandbox/](https://YOUR_ORG.github.io/VXR-Sandbox/) |
+| **Live Demo (GitHub Pages)** | [https://voxion-labs.github.io/VXR-Sandbox/](https://voxion-labs.github.io/VXR-Sandbox/) |
 | **Deploy guide** | [DEPLOY.md](./DEPLOY.md) |
 | **Research Paper (PDF)** | [VXR_Sandbox_Research.pdf](./docs/whitepaper/VXR_Sandbox_Research.pdf) |
 | **LaTeX Source** | [VXR_Sandbox_Paper.tex](./research/VXR_Sandbox_Paper.tex) |
