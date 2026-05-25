@@ -1,15 +1,23 @@
-# VXR-Sandbox
+<p align="center">
+  <img src="./research/Voxion_Labs_Logo.png" alt="Voxion Labs Logo" width="96" />
+</p>
 
-![C++17](https://img.shields.io/badge/C%2B%2B-17-00599C?logo=c%2B%2B&logoColor=white)
-![WebAssembly](https://img.shields.io/badge/WebAssembly-Emscripten-654FF0?logo=webassembly&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES2020-F7DF1E?logo=javascript&logoColor=black)
-![Zero Backend](https://img.shields.io/badge/Architecture-Zero--Backend-39ff8a)
-![Applied Research](https://img.shields.io/badge/Project-Applied%20Research-00d4ff)
-![License](https://img.shields.io/badge/License-Voxion%20Labs-8b949e)
+# <p align="center">VXR-Sandbox</p>
+<h3 align="center">Voxion eXperimental Research</h3>
 
-**Voxion eXperimental Research — Sandboxing (VXR-Sandbox)**
+<p align="center">
+  <img src="https://img.shields.io/badge/C%2B%2B-17-00599C?logo=c%2B%2B&logoColor=white" alt="C++17" />
+  <img src="https://img.shields.io/badge/WebAssembly-Emscripten-654FF0?logo=webassembly&logoColor=white" alt="WebAssembly" />
+  <img src="https://img.shields.io/badge/JavaScript-ES2020-F7DF1E?logo=javascript&logoColor=black" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/Architecture-Zero--Backend-39ff8a" alt="Zero Backend" />
+  <img src="https://img.shields.io/badge/Project-Applied%20Research-00d4ff" alt="Applied Research" />
+  <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License" />
+</p>
 
-Browser-native, deterministic LLM prompt-injection defense. A **zero-backend** security layer that runs entirely in the client via a C++ kernel compiled to WebAssembly.
+<p align="center">
+  <strong>Browser-native, deterministic LLM prompt-injection defense.</strong><br/>
+  A <em>zero-backend</em> security layer that runs entirely in the client via a C++ kernel compiled to WebAssembly.
+</p>
 
 | Resource | Link |
 | --- | --- |
@@ -297,9 +305,21 @@ If you reference this work academically or in engineering discussions:
 }
 ```
 
-**Copyright © 2026 Voxion Labs. All rights reserved.**
+This repository is licensed under the **MIT License**.
 
-This repository is distributed as applied research material. Redistribution, commercial use, or modification may be restricted—refer to the research PDF and your applicable agreement with Voxion Labs.
+```text
+Copyright (c) 2026 Voxion Labs
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+```
 
 ---
 

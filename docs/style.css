@@ -22,8 +22,8 @@
     --accent-cyan: #00d4ff;
     --accent-cyan-dim: rgba(0, 212, 255, 0.12);
 
-    --font-ui: "Segoe UI", system-ui, -apple-system, sans-serif;
-    --font-mono: "Cascadia Code", "Fira Code", "Consolas", monospace;
+    --font-ui: "Outfit", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --font-mono: "JetBrains Mono", "Cascadia Code", "Fira Code", "Consolas", monospace;
 
     --radius: 12px;
     --shadow-panel: 0 0 0 1px var(--border), 0 18px 48px rgba(0, 0, 0, 0.45);
@@ -94,11 +94,19 @@ body {
 }
 
 .brand-mark {
+    display: inline-block;
     font-size: 1.75rem;
     color: var(--accent-cyan);
     text-shadow: 0 0 16px var(--accent-cyan);
     line-height: 1;
     margin-top: 0.15rem;
+    animation: rotate-glow 12s linear infinite;
+}
+
+@keyframes rotate-glow {
+    0% { transform: rotate(0deg); text-shadow: 0 0 12px var(--accent-cyan); }
+    50% { text-shadow: 0 0 24px var(--accent-cyan); }
+    100% { transform: rotate(360deg); text-shadow: 0 0 12px var(--accent-cyan); }
 }
 
 .brand h1 {
