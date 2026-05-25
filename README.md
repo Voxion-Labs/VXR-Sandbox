@@ -13,7 +13,7 @@ Browser-native, deterministic LLM prompt-injection defense. A **zero-backend** s
 
 | Resource | Link |
 | --- | --- |
-| **Live Demo (GitHub Pages)** | [https://YOUR_ORG.github.io/VXR-Sandbox/](https://YOUR_ORG.github.io/VXR-Sandbox/) |
+| **Live Demo (GitHub Pages)** | [https://voxion-labs.github.io/VXR-Sandbox/](https://YOUR_ORG.github.io/VXR-Sandbox/) |
 | **Deploy guide** | [DEPLOY.md](./DEPLOY.md) |
 | **Research Paper (PDF)** | [VXR_Sandbox_Research.pdf](./docs/whitepaper/VXR_Sandbox_Research.pdf) |
 | **LaTeX Source** | [VXR_Sandbox_Paper.tex](./research/VXR_Sandbox_Paper.tex) |
@@ -28,9 +28,9 @@ Browser-native, deterministic LLM prompt-injection defense. A **zero-backend** s
 </td>
 <td>
 <strong>Rudranarayan Jena</strong><br/>
-<em>Founder, <a href="https://voxionlabs.github.io">Voxion Labs</a></em><br/><br/>
+<em>Founder, <a href="https://github.com/Voxion-Labs">Voxion Labs</a></em><br/><br/>
 <img src="./research/Voxion_Labs_Logo.png" alt="Voxion Labs — broken cube logo" width="48" align="left" style="margin-right: 10px;" />
-Applied research on deterministic, client-side LLM prompt-injection defense. The <strong>broken-cube mark</strong> above is the official <strong>Voxion Labs</strong> logo, used in the IEEE publication and Cyber-Defense Dashboard.
+Applied research on deterministic, client-side LLM prompt-injection defense. The <strong>broken-cube mark</strong> above is the official <strong>Voxion Labs</strong> logo, used in the Research publication and Cyber-Defense Dashboard.
 </td>
 </tr>
 </table>
