@@ -30,6 +30,7 @@ let analyzePrompt = null;
  * @property {boolean} is_safe
  * @property {number} threat_level
  * @property {string} flagged_reason
+ * @property {string} status
  */
 
 /**
@@ -184,7 +185,11 @@ async function scanPromptLocal(userText) {
     /** @type {ScanResult} */
     const result = JSON.parse(jsonText);
 
-    if (typeof result.is_safe !== 'boolean' || typeof result.threat_level !== 'number') {
+    if (
+      typeof result.is_safe !== 'boolean' ||
+      typeof result.threat_level !== 'number' ||
+      typeof result.status !== 'string'
+    ) {
       throw new Error('Invalid response schema from Wasm kernel');
     }
 
@@ -247,10 +252,21 @@ function renderScanResult(result) {
     return;
   }
 
-  const isSafe = result.is_safe;
-  const stateClass = isSafe ? 'safe' : 'threat';
-  const verdictLabel = isSafe ? 'Safe' : 'Threat Detected';
-  const verdictIcon = isSafe ? '✓' : '⚠';
+  const status = result.status || (result.is_safe ? 'safe' : 'threat');
+  let stateClass = 'safe';
+  let verdictLabel = 'Safe';
+  let verdictIcon = '✓';
+
+  if (status === 'threat') {
+    stateClass = 'threat';
+    verdictLabel = 'Threat Detected';
+    verdictIcon = '✕';
+  } else if (status === 'moderate') {
+    stateClass = 'moderate';
+    verdictLabel = 'Caution: Educational / Borderline';
+    verdictIcon = '⚠';
+  }
+
   const reason =
     result.flagged_reason && result.flagged_reason.length > 0
       ? result.flagged_reason
@@ -266,7 +282,7 @@ function renderScanResult(result) {
     <div class="result-metrics">
       <div class="metric-card">
         <span class="metric-label">is_safe</span>
-        <span class="metric-value">${String(isSafe)}</span>
+        <span class="metric-value">${String(result.is_safe)}</span>
       </div>
       <div class="metric-card">
         <span class="metric-label">threat_level</span>

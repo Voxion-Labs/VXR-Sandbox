@@ -374,7 +374,7 @@ def page_three(p):
     y -= 25
     p.callout(
         "Mathematical threat evaluation",
-        "Aggregate threat level: L = max(w_i) for all matching patterns, where L in [1, 10]. Safe status = (L < 7).",
+        "Aggregate threat level: L = max(w_i) for matching patterns, where L in [1, 10]. Status = safe (L<=3), moderate (4<=L<=6), threat (L>=7).",
         MARGIN_X,
         y,
         PAGE_W - 2 * MARGIN_X,
@@ -386,7 +386,7 @@ def page_three(p):
     formula = (
         "match(p, k_i) = true if k_i is substring of p (respecting word boundaries)\n"
         "L = max { w_i * match(p, k_i) } over all i in Heuristics\n"
-        "Response = { safe: (L < 7), threat_level: L, reason: P_i.reason }"
+        "Response = { status: safe (L<=3) | moderate (4<=L<=6) | threat (L>=7), threat_level: L }"
     )
     y = p.paragraph(formula, MARGIN_X + 10, y, PAGE_W - 2 * MARGIN_X - 20, size=9, leading=14, font="Courier")
     y -= 8

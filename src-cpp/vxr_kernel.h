@@ -29,6 +29,7 @@ struct VXRAnalysisResult {
     bool is_safe;
     int threat_level;
     const char* flagged_reason;
+    const char* status;
 };
 
 // Pure C++ entry point (no JSON serialization). Useful for native unit tests.

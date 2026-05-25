@@ -54,6 +54,18 @@ constexpr HeuristicPattern kPatterns[] = {
     {"show system prompt", 9, "prompt_exfiltration", false},
     {"print your instructions", 8, "prompt_exfiltration", false},
     {"dan", 8, "dan_jailbreak", true},
+    {"nsfw", 9, "sensitive_content", true},
+    {"pornographic", 9, "sensitive_content", false},
+    {"pornography", 9, "sensitive_content", false},
+    {"porn", 9, "sensitive_content", true},
+    {"explicit violence", 10, "sensitive_content", false},
+    {"extreme violence", 10, "sensitive_content", false},
+    {"gore", 10, "sensitive_content", true},
+    {"erotic", 8, "sensitive_content", false},
+    {"nudity", 8, "sensitive_content", true},
+    {"adult content", 8, "sensitive_content", false},
+    {"kill people", 10, "sensitive_content", false},
+    {"murder", 10, "sensitive_content", true},
 };
 
 char g_result_buffer[kResultBufferSize];
@@ -145,10 +157,27 @@ VXRAnalysisResult analyze_impl(std::string_view prompt) {
     result.is_safe = true;
     result.threat_level = kThreatMin;
     result.flagged_reason = "";
+    result.status = "safe";
 
     if (prompt.empty()) {
         return result;
     }
+
+    // Convert the prompt to lowercase in-place on the staged mutable Wasm heap buffer.
+    // This provides complete protection against capitalization bypass attempts.
+    char* mutable_prompt = const_cast<char*>(prompt.data());
+    for (std::size_t i = 0; i < prompt.size(); ++i) {
+        mutable_prompt[i] = to_lower_ascii(mutable_prompt[i]);
+    }
+
+    // Establish context exception checks for educational queries
+    bool has_educational_context =
+        ci_contains_word(prompt, "explain") ||
+        ci_contains_word(prompt, "educational") ||
+        ci_contains_word(prompt, "medical") ||
+        ci_contains_word(prompt, "anatomy") ||
+        ci_contains_word(prompt, "biology") ||
+        ci_contains_word(prompt, "health");
 
     bool matched = false;
     int max_threat = kThreatMin;
@@ -160,16 +189,35 @@ VXRAnalysisResult analyze_impl(std::string_view prompt) {
         }
 
         matched = true;
-        if (pattern.threat_level > max_threat) {
-            max_threat = pattern.threat_level;
+        int level = pattern.threat_level;
+
+        // Context-aware negation: Downgrade sensitive content severity in educational context
+        if (has_educational_context && std::string_view(pattern.reason) == "sensitive_content") {
+            level = level - 4; // Map 8-10 down to 4-6 (Moderate tier)
+        }
+
+        if (level > max_threat) {
+            max_threat = level;
             best_reason = pattern.reason;
         }
     }
 
-    if (matched) {
+    int final_threat = clamp_threat(max_threat);
+    result.threat_level = final_threat;
+
+    // Map the final threat level into our 3-tier status system
+    if (matched && final_threat >= 7) {
         result.is_safe = false;
-        result.threat_level = clamp_threat(max_threat);
+        result.status = "threat";
         result.flagged_reason = best_reason;
+    } else if (matched && final_threat >= 4) {
+        result.is_safe = false;
+        result.status = "moderate";
+        result.flagged_reason = best_reason;
+    } else {
+        result.is_safe = true;
+        result.status = "safe";
+        result.flagged_reason = matched ? best_reason : "";
     }
 
     return result;
@@ -177,14 +225,16 @@ VXRAnalysisResult analyze_impl(std::string_view prompt) {
 
 const char* serialize_result(const VXRAnalysisResult& result) {
     const char* reason = result.flagged_reason != nullptr ? result.flagged_reason : "";
+    const char* status = result.status != nullptr ? result.status : "safe";
 
     std::snprintf(
         g_result_buffer,
         kResultBufferSize,
-        R"({"is_safe":%s,"threat_level":%d,"flagged_reason":"%s"})",
+        R"({"is_safe":%s,"threat_level":%d,"flagged_reason":"%s","status":"%s"})",
         result.is_safe ? "true" : "false",
         result.threat_level,
-        reason);
+        reason,
+        status);
 
     g_result_buffer[kResultBufferSize - 1] = '\0';
     return g_result_buffer;

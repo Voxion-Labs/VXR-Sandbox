@@ -11,6 +11,10 @@
     --neon-safe-dim: rgba(57, 255, 138, 0.15);
     --neon-safe-glow: rgba(57, 255, 138, 0.45);
 
+    --neon-moderate: #ffb833;
+    --neon-moderate-dim: rgba(255, 184, 51, 0.15);
+    --neon-moderate-glow: rgba(255, 184, 51, 0.45);
+
     --neon-threat: #ff3b5c;
     --neon-threat-dim: rgba(255, 59, 92, 0.15);
     --neon-threat-glow: rgba(255, 59, 92, 0.45);
@@ -389,6 +393,11 @@ body {
     box-shadow: inset 0 0 40px var(--neon-safe-dim), 0 0 24px var(--neon-safe-dim);
 }
 
+.scan-result--moderate {
+    border-color: rgba(255, 184, 51, 0.45);
+    box-shadow: inset 0 0 40px var(--neon-moderate-dim), 0 0 24px var(--neon-moderate-dim);
+}
+
 .scan-result--threat {
     border-color: rgba(255, 59, 92, 0.45);
     box-shadow: inset 0 0 40px var(--neon-threat-dim), 0 0 24px var(--neon-threat-dim);
@@ -421,6 +430,11 @@ body {
 .scan-result--safe .result-verdict-label {
     color: var(--neon-safe);
     text-shadow: 0 0 20px var(--neon-safe-glow);
+}
+
+.scan-result--moderate .result-verdict-label {
+    color: var(--neon-moderate);
+    text-shadow: 0 0 20px var(--neon-moderate-glow);
 }
 
 .scan-result--threat .result-verdict-label {
@@ -467,6 +481,10 @@ body {
     color: var(--neon-safe);
 }
 
+.scan-result--moderate .metric-value--level {
+    color: var(--neon-moderate);
+}
+
 .scan-result--threat .metric-value--level {
     color: var(--neon-threat);
 }
@@ -488,6 +506,11 @@ body {
 .scan-result--safe .threat-meter-fill {
     background: linear-gradient(90deg, var(--neon-safe), #1aff9c);
     box-shadow: 0 0 12px var(--neon-safe-glow);
+}
+
+.scan-result--moderate .threat-meter-fill {
+    background: linear-gradient(90deg, #ff9900, var(--neon-moderate));
+    box-shadow: 0 0 12px var(--neon-moderate-glow);
 }
 
 .scan-result--threat .threat-meter-fill {
