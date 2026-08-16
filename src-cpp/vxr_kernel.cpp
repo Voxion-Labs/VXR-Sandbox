@@ -550,7 +550,7 @@ VXR_EXPORT const char* analyzePrompt(const char* prompt) {
     // so we never read past the allocation even if the caller forgot to
     // null-terminate or passed a massive buffer.
     const std::size_t len =
-        std::strnlen(prompt, vxr::kMaxPromptBytes + 1);  // +1 to detect oversize
+        strnlen(prompt, vxr::kMaxPromptBytes + 1);  // +1 to detect oversize
 
     const vxr::AnalysisResult result =
         vxr::analyzePromptCpp(std::string_view(prompt, len));
