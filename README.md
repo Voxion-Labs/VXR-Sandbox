@@ -1,18 +1,17 @@
-<p align="center">
-  <img src="./research/Voxion_Labs_Logo.png" alt="Voxion Labs Logo" width="96" />
-</p>
 
 # <p align="center">VXR-Sandbox</p>
 <h3 align="center">Voxion eXperimental Research</h3>
 
-<p align="center">
-  <img src="[https://img.shields.io/badge/C%2B%2B-17-00599C?logo=c%2B%2B&logoColor=white](https://img.shields.io/badge/C%2B%2B-17-00599C?logo=c%2B%2B&logoColor=white)" alt="C++17" />
-  <img src="[https://img.shields.io/badge/WebAssembly-Emscripten-654FF0?logo=webassembly&logoColor=white](https://img.shields.io/badge/WebAssembly-Emscripten-654FF0?logo=webassembly&logoColor=white)" alt="WebAssembly" />
-  <img src="[https://img.shields.io/badge/JavaScript-ES2020-F7DF1E?logo=javascript&logoColor=black](https://img.shields.io/badge/JavaScript-ES2020-F7DF1E?logo=javascript&logoColor=black)" alt="JavaScript" />
-  <img src="[https://img.shields.io/badge/Architecture-Zero--Backend-39ff8a](https://img.shields.io/badge/Architecture-Zero--Backend-39ff8a)" alt="Zero Backend" />
-  <img src="[https://img.shields.io/badge/Project-Applied%20Research-00d4ff](https://img.shields.io/badge/Project-Applied%20Research-00d4ff)" alt="Applied Research" />
-  <img src="[https://img.shields.io/badge/License-Proprietary-red.svg](https://img.shields.io/badge/License-Proprietary-red.svg)" alt="License" />
-</p>
+<div align="center">
+
+![C++17](https://img.shields.io/badge/C%2B%2B-17-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
+![WebAssembly](https://img.shields.io/badge/WebAssembly-Emscripten-654FF0?style=for-the-badge&logo=webassembly&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES2020-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Zero Backend](https://img.shields.io/badge/Architecture-Zero--Backend-39ff8a?style=for-the-badge)
+![Applied Research](https://img.shields.io/badge/Project-Applied%20Research-00d4ff?style=for-the-badge)
+![License](https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge)
+
+</div>
 
 <p align="center">
   <strong>Browser-native, deterministic LLM prompt-injection defense.</strong><br/>
