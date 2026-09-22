@@ -16,7 +16,7 @@ git init
 git add .
 git commit -m "VXR-Sandbox: complete public release with Wasm kernel, UI, and IEEE paper"
 git branch -M main
-git remote add origin https://github.com/YOUR_ORG/VXR-Sandbox.git
+git remote add origin https://github.com/Voxion-Labs/VXR-Sandbox.git
 git push -u origin main
 ```
 
@@ -36,8 +36,8 @@ After deploy completes (~3–5 min):
 
 | Resource | URL |
 |----------|-----|
-| **Dashboard** | `https://YOUR_ORG.github.io/VXR-Sandbox/` |
-| **Research PDF** | `https://YOUR_ORG.github.io/VXR-Sandbox/whitepaper/VXR_Sandbox_Research.pdf` |
+| **Dashboard** | `https://Voxion-Labs.github.io/VXR-Sandbox/` |
+| **Research PDF** | `https://Voxion-Labs.github.io/VXR-Sandbox/whitepaper/VXR_Sandbox_Research.pdf` |
 
 Update `README.md` badge links if your org name differs from `voxionlabs`.
 
